@@ -1,12 +1,15 @@
 const app = require("express")();
+app.use(require("body-parser").json());
 require("dotenv").config();
 require("mongoose").connect(
   process.env.MONGO_URI,
   { useNewUrlParser: true },
   err => {
-    console.log("mongo up");
+    console.log(err || "mongo up");
   }
 );
+
+require("./init");
 
 app.use((req, res, next) => {
   console.log(

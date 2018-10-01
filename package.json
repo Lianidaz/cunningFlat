@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/Lianidaz/cunningFlat#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "mongoose": "^5.3.0",
+    "node-cmd": "^3.0.0",
     "nodemon": "^1.18.4"
   }
 }
