@@ -1,11 +1,14 @@
 const r = require("express").Router();
-const Room = require("../db/models/room");
+const models = require("../db/models");
 
 r.post("/butt", (req, res) => {
-  Room.findOneAndUpdate(
-    [{ light: { butt: req.body.pin } }, { led: { butt: req.body.pin } }],
-    { state: !state }
-  );
+  models.Device.findOne({ type: "button", pin: req.body.pin }, (err, dev) => {
+    if (err) throw err;
+    models.Device.findOne({ _id: dev.output_id }, (err, output) => {
+      if (err) throw err;
+      output.state = !output.state;
+    });
+  });
 });
 
 module.exports = r;
