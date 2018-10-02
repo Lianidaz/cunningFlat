@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const devSchema = new mongoose.Schema({
-  _id: String,
+let devSchema = new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
   type: String,
-  output_id: String,
+  output_id: mongoose.Schema.Types.ObjectId,
   state: Boolean,
   level: Number,
   default_level: Number,
@@ -12,9 +12,9 @@ const devSchema = new mongoose.Schema({
 });
 
 module.exports = {
-  Device: new mongoose.model("device", devSchema),
+  Device: mongoose.model("device", devSchema),
 
-  Room: new mongoose.model(
+  Room: mongoose.model(
     "room",
     new mongoose.Schema({
       name: String,
@@ -22,11 +22,11 @@ module.exports = {
     })
   ),
 
-  Log: new mongoose.model(
+  Log: mongoose.model(
     "log",
     new mongoose.Schema({
       timestamp: Number,
-      devices: [devSchema]
+      states: [devSchema]
     })
   )
 };

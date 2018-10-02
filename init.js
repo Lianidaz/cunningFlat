@@ -1,10 +1,12 @@
 const cmd = require("node-cmd");
-const Pin = require("./db/models/pin");
+const models = require("./db/models");
 
-Pin.find({ type: "button" }, (err, data) => {
-  for (let pin of data) {
-    let p = pin.toObject();
-    let command = "python ./bits/butt.py" + p.number;
+// require("./log");
+
+models.Device.find({ type: "button" }, (err, data) => {
+  if (err) throw err;
+  for (let dev of data) {
+    let command = "python ./bits/butt.py" + dev.toObject().pin;
     cmd.run(command);
   }
 });
