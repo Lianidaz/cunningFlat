@@ -21,16 +21,11 @@ app.use((req, res, next) => {
   next();
 });
 
-const Key = require("./db/models/apikey");
 app.use(
   "/:key",
   (req, res, next) => {
-    Key.findOne({ key: req.params.key }, (err, data) => {
-      if (err) throw err;
-
-      if (data != null) next();
-      else res.send("I don't think so");
-    });
+    if (req.params.key === process.env.APIKEY) next();
+    else res.send("I don't think so");
   },
   require("./routers/root")
 );
