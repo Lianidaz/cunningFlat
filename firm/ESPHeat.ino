@@ -20,7 +20,7 @@ BLYNK_WRITE(V8)
 }
 BLYNK_WRITE(V9)
 {
-    v8 = param.asInt();
+    v9 = param.asInt();
 }
 
 void setup()
