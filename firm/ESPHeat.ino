@@ -8,12 +8,8 @@ char pass[] = "YourPassword";
 
 #define RPIN 2
 
-int v7, v8, v9;
+int v8;
 
-BLYNK_WRITE(V7);
-{
-    v7 = param.asInt();
-}
 BLYNK_WRITE(V8)
 {
     v8 = param.asInt();
@@ -31,6 +27,6 @@ void setup()
 
 void loop()
 {
-    digitalWrite(RPIN, v7 * v8 * v9);
+    digitalWrite(RPIN, v8);
     Blynk.run();
 }

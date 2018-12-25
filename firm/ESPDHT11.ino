@@ -13,10 +13,20 @@ char pass[] = "YourPassword";
 DHT dht(DHTPIN, DHTTYPE);
 BlynkTimer timer;
 
+WidgetBridge bridge1(V9);
+BLYNK_CONNECTED()
+{
+  bridge1.setAuthToken("OtherAuthToken");
+}
+
 void sendSensor()
 {
   float t = dht.readTemperature();
   Blynk.virtualWrite(V6, t);
+  if (t >= 25)
+  {
+    bridge1.virtualWrite(V8, 1)
+  }
 }
 
 void setup()
