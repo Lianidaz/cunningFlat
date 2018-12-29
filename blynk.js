@@ -23,22 +23,13 @@ v1.on("write", par => {
 
 let status = (par, pin) => {
   let job;
-  switch (par) {
-    case "1":
-      job = "autotests execution";
-      break;
-    case "2":
-      job = "NOMAD_CB_TEST";
-      break;
-    case "3":
-      job = "run_datasettool";
-      break;
+  switch (par) {xxx
   }
 
   request.get(
     "http://" +
       process.env.JCRED +
-      "@build:8080/job/" +
+      "@xxx/job/" +
       job +
       "/lastBuild/api/json?tree=result",
     (err, res, body) => {
